@@ -6,10 +6,14 @@ var tasks = [];
 
 function addItem() {
   var newItemText = inputText.value.trim();
-  if (newItemText) {
+  if (newItemText && tasks.length < 30) {
     tasks.push(newItemText);
     inputText.value = "";
     render();
+  }
+  else if (tasks.length === 30){
+    console.log("too much to do... (free teir is up to 30 tasks)");
+     inputText.value = "";
   }
 }
 
