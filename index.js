@@ -21,7 +21,8 @@ function render() {
     list.innerHTML = "";
     for (var i = 0; i < tasks.length; i++) {
         var newItem = document.createElement("li");
-        newItem.textContent = tasks[i];
+        newItem.innerHTML = "<p>" + tasks[i] + "</p>";
+        var btnDiv = document.createElement("Div");
 
         // Add delete button
         var deleteBtn = document.createElement("button");
@@ -31,7 +32,6 @@ function render() {
             tasks.splice(index, 1);
             render();
         });
-        newItem.appendChild(deleteBtn);
 
         // Add up button
         var upBtn = document.createElement("button");
@@ -45,8 +45,6 @@ function render() {
                 render();
             }
         });
-        newItem.appendChild(upBtn);
-
         // Add down button
         var downBtn = document.createElement("button");
         downBtn.textContent = "Down";
@@ -59,8 +57,10 @@ function render() {
                 render();
             }
         });
-        newItem.appendChild(downBtn);
-
+        btnDiv.appendChild(deleteBtn)
+        btnDiv.appendChild(upBtn)
+        btnDiv.appendChild(downBtn)
+        newItem.appendChild(btnDiv);
         list.appendChild(newItem);
     }
 }
